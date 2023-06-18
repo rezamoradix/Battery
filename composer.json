@@ -1,0 +1,26 @@
+{
+    "name": "rey/battery",
+    "description": "Battery Temaplte Engine for Codeigniter",
+    "autoload": {
+        "psr-4": {
+            "Rey\\Battery\\": "src/"
+        },
+        "files": [
+            "src/Helpers/battery_helper.php"
+        ]
+    },
+    "require": {
+        "morilog/jalali": "3.*"
+    },
+    "require-dev": {
+        "codeigniter4/devkit": "^1.0",
+        "codeigniter4/framework": "^4.2.7"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "config": {
+        "allow-plugins": {
+            "phpstan/extension-installer": true
+        }
+    }
+}
