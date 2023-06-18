@@ -35,8 +35,6 @@ class Battery
         $this->debug = ENVIRONMENT == 'development';
 
         helper('battery');
-        helper('jdf');
-        helper('auth');
         helper('filesystem');
         helper('inflector');
         helper('text');
