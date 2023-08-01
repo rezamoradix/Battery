@@ -16,6 +16,13 @@ class Battery
     protected $gen_css_dir = "css";
     protected $babelenv = WRITEPATH . 'babelenv';
 
+    /**
+     * Battery Config
+     *
+     * @var BatteryConfig
+     */
+    private $config;
+
     private $view_path = null;
     private $hashes = [];
     private $new_hashes = [];
@@ -28,7 +35,10 @@ class Battery
 
     public function __construct($view_name = "", $data = [])
     {
-        $this->view_name = $view_name;
+        $this->config = config('Battery');
+
+        $this->view_name = $this->config->hasAlias($view_name) ?  $this->config->getAlias($view_name) : $view_name;
+        
         $this->data = $data;
         $this->view_path = APPPATH . 'Views' . DIRECTORY_SEPARATOR;
 
@@ -38,6 +48,7 @@ class Battery
         helper('filesystem');
         helper('inflector');
         helper('text');
+
 
         if ($this->debug) {
             $this->get_hashes();
