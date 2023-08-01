@@ -150,7 +150,7 @@ class Battery
     public function parent_name($content)
     {
         preg_match("/@@parent\s*?=\s*(.*?)\s/sui", $content, $extend);
-        return isset($extend[1]) ? $extend[1] : false;
+        return isset($extend[1]) ? $this->config->getTheme() . $extend[1] : false;
     }
 
     public function render_parent($parent, $child)
