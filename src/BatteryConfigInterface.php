@@ -9,5 +9,5 @@ namespace Rey\Battery;
 interface BatteryConfigInterface {
     public function hasAlias(string $name): bool;
     public function getAlias(string $name): string;
-    public function getTheme(string $name): string;
+    public function getTheme(): string;
 }

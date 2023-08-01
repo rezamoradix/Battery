@@ -17,7 +17,7 @@ class BatteryConfig implements BatteryConfigInterface
         return $this->aliases[$name];
     }
 
-    public function getTheme(string $name): string
+    public function getTheme(): string
     {
         /**
          * Since theme in Battery means a directory,
