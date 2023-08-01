@@ -159,7 +159,7 @@ class Battery
         if (!empty($pls[1])) {
             foreach ($pls[1] as $key => $pl) {
                 preg_match("/@@$pl(.*?)@@stop/sui", $child, $section);
-                $parent = str_replace("@@=$pl", (isset($section[1]) ? $section[1] : ''), $parent);
+                $parent = str_replace("@@=$pl", (isset($section[1]) ? trim($section[1]) : ''), $parent);
             }
         }
 
