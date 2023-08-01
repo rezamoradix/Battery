@@ -586,19 +586,26 @@ class Battery
 
         // rv: with props
         $content = preg_replace_callback("/<b:(.*?)\s+(.*?)\s*\/>/sui", function ($rv) {
-            preg_match_all("/([A-Za-z_0-9]*?)=\"(.*?)\"/sui", $rv[2], $match);
-
-            $propKeys = $match[1];
-            $propVals = $match[2];
-            $countProps = count($propKeys);
-
             $propsAsStrings = [];
 
-            for ($i = 0; $i < $countProps; $i++)
-                $propsAsStrings[] = "'" . $propKeys[$i] . "' => " . $propVals[$i];
+            if (isset($rv[2])) {
+                preg_match_all("/([:A-Za-z_0-9]*?)=\"(.*?)\"/sui", $rv[2], $match);
 
+                if (isset($match[1]) && isset($match[2])) {
+                    $propKeys = $match[1];
+                    $propVals = $match[2];
+                    $attributeCount = count($propKeys);
 
-            $joined = implode(', ', $propsAsStrings);
+                    for ($i = 0; $i < $attributeCount; $i++) {
+                        $key = $propKeys[$i];
+                        $val = $propVals[$i];
+                        $isString = $key[0] === ":";
+                        $propsAsStrings[] = "'" . $key . "' => " . ($isString ? "'$val'" : $val);
+                    }
+                }
+            }
+
+            $joined = implode(',', $propsAsStrings);
 
             $componentName = str_replace(['\\', '.'], '/', $rv[1]);
             return "<?php echo battery('$componentName', [$joined]); ?>";
@@ -610,10 +617,13 @@ class Battery
         // rv-inject: with props
         $content = preg_replace_callback("/<b-inject:([A-Za-z0-9_\.]+)\s+(.*?)\/>/sui", function ($rv) {
             //log_message('error', print_r($rv, true));
-            preg_match_all("/([A-Za-z_0-9]*?)=\"(.*?)\"/sui", $rv[2], $props);
+            preg_match_all("/([:A-Za-z_0-9]*?)=\"(.*?)\"/sui", $rv[2], $props);
             $genProps = '[';
             for ($i = 0; $i < count($props[1]); $i++) {
-                $genProps .= "'" . $props[1][$i] . "' => " . $props[2][$i] . ",";
+                $key = $props[1][$i];
+                $val = $props[2][$i];
+                $isString = $key[0] === ":";
+                $genProps .= "'" . $key . "' => " . ($isString ? "'$val'" : $val) . ",";
             }
             $genProps .= ']';
 
