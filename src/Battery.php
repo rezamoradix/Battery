@@ -37,8 +37,8 @@ class Battery
     {
         $this->config = config('Battery');
 
-        $this->view_name = $this->config->hasAlias($view_name) ?  $this->config->getAlias($view_name) : $view_name;
-        
+        $this->view_name = $this->config->getTheme() . ($this->config->hasAlias($view_name) ? $this->config->getAlias($view_name) : $view_name);
+
         $this->data = $data;
         $this->view_path = APPPATH . 'Views' . DIRECTORY_SEPARATOR;
 
