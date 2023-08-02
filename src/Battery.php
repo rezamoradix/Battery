@@ -600,7 +600,7 @@ class Battery
                         $key = $propKeys[$i];
                         $val = $propVals[$i];
                         $isString = $key[0] !== ":";
-                        $propsAsStrings[] = "'" . ($isString ? substr($key, 1) : $key) . "' => " . ($isString ? "'$val'" : $val);
+                        $propsAsStrings[] = "'" . ($isString ? $key : substr($key, 1)) . "' => " . ($isString ? "'$val'" : $val);
                     }
                 }
             }
@@ -623,7 +623,7 @@ class Battery
                 $key = $props[1][$i];
                 $val = $props[2][$i];
                 $isString = $key[0] !== ":";
-                $genProps .= "'" . ($isString ? substr($key, 1) : $key) . "' => " . ($isString ? "'$val'" : $val) . ",";
+                $genProps .= "'" . ($isString ? $key : substr($key, 1)) . "' => " . ($isString ? "'$val'" : $val) . ",";
             }
             $genProps .= ']';
 
