@@ -697,7 +697,7 @@ class Battery
 
     public function write_cache_class()
     {
-        $className = "Class_" . str_replace(['/', '\\'], '_', $this->view_name);
+        $className = "Class_" . str_replace(['/', '\\', '-'], '_', $this->view_name);
 
         $classCache =
             "<?php
