@@ -699,13 +699,12 @@ class Battery
     {
         $className = "Class_" . str_replace(['/', '\\', '-'], '_', $this->view_name);
 
-        $classCache =
-            "<?php
-            namespace App\\Views\\_battery;
-            class $className {}
-            include '" . str_replace(["\\", "/"], ".", $this->view_name) . '.php' . "';
-            ";
-
+        $classCache = implode("\n", [
+            "<?php",
+            "namespace App\\Views\\_battery;",
+            "class $className {}",
+            "include '" . str_replace(["\\", "/"], ".", $this->view_name) . '.php' . "';"
+        ]);
 
         write_file($this->view_path . $this->cache_dir . '/' . $className . '.php', $classCache);
     }
