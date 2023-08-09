@@ -193,10 +193,10 @@ class Battery
         );
 
 
-        // AUTH & GUEST
-        $content = preg_replace("/@@guest/sui", "<?php if (!is_auth()) : ?>", $content);
+        // AUTH & GUEST (CI Shield)
+        $content = preg_replace("/@@guest/sui", "<?php if (!auth()->loggedIn()) : ?>", $content);
         $content = preg_replace("/@@endguest/sui", "<?php endif; ?>", $content);
-        $content = preg_replace("/@@auth/sui", "<?php if (is_auth()) : ?>", $content);
+        $content = preg_replace("/@@auth/sui", "<?php if (auth()->loggedIn()) : ?>", $content);
         $content = preg_replace("/@@endauth/sui", "<?php endif; ?>", $content);
 
         // IF STATEMENT
