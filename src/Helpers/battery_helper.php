@@ -27,7 +27,9 @@ function ee($data)
 function jalali($date)
 {
     if ($date === null) return null;
-    return Jalalian::forge($date->timestamp);
+    $jd = jdate('Y/m/d H:i:s', $date->timestamp);
+    date_default_timezone_set('UTC');
+    return $jd;
 }
 
 function uploaded_url($url): string
