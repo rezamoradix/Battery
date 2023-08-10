@@ -17,7 +17,7 @@ function batframe($frame, $data = [])
 
 function ee($data)
 {
-    if ($data instanceof Time || $data instanceof DateTime)
+    if (config('Battery')->useJalali && ($data instanceof Time || $data instanceof DateTime))
         return jalali($data);
 
     return esc($data);

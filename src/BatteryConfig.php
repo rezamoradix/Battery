@@ -6,6 +6,7 @@ class BatteryConfig implements BatteryConfigInterface
 {
     public string $theme = "";
     public array $aliases = [];
+    public bool $useJalali = true;
 
     public function hasAlias(string $name): bool
     {

@@ -5,6 +5,8 @@ namespace Rey\Battery;
 /**
  * Battery Config Interface
  * @property array $aliases
+ * @property string $theme
+ * @property bool $useJalali
  */
 interface BatteryConfigInterface {
     public function hasAlias(string $name): bool;
