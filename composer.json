@@ -6,11 +6,9 @@
             "Rey\\Battery\\": "src/"
         },
         "files": [
-            "src/Helpers/battery_helper.php"
+            "src/Helpers/battery_helper.php",
+            "src/Helpers/jdf_helper.php"
         ]
-    },
-    "require": {
-        "morilog/jalali": "3.*"
     },
     "require-dev": {
         "codeigniter4/devkit": "^1.0",
@@ -22,5 +20,8 @@
         "allow-plugins": {
             "phpstan/extension-installer": true
         }
+    },
+    "require": {
+        "nesbot/carbon": "^2.68"
     }
 }

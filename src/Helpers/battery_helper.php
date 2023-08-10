@@ -161,7 +161,6 @@ function carbon(...$params)
     return new \Carbon\Carbon(...$params);
 }
 
-
 function lc_random_string(int $len = 8): string
 {
     $pool = 'abcdefghijklmnopqrstuvwxyz';
