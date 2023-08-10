@@ -6,8 +6,7 @@
             "Rey\\Battery\\": "src/"
         },
         "files": [
-            "src/Helpers/battery_helper.php",
-            "src/Helpers/jdf_helper.php"
+            "src/Helpers/battery_helper.php"
         ]
     },
     "require-dev": {
@@ -22,6 +21,7 @@
         }
     },
     "require": {
-        "nesbot/carbon": "^2.68"
+        "nesbot/carbon": "^2.68",
+        "morilog/jalali": "^3.4"
     }
 }

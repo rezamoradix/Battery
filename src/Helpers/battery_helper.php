@@ -1,6 +1,7 @@
 <?php
 
 use CodeIgniter\I18n\Time;
+use Morilog\Jalali\Jalalian;
 use Rey\Battery\Battery;
 
 function battery($view, $data = [])
@@ -26,7 +27,7 @@ function ee($data)
 function jalali($date)
 {
     if ($date === null) return null;
-    return jdate("Y/m/d H:i:s", $date->getTimestamp());
+    return Jalalian::forge($date->timestamp);
 }
 
 function uploaded_url($url): string
